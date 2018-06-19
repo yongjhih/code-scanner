@@ -773,6 +773,20 @@ public final class CodeScanner {
             }
             Utils.optimizeParameters(parameters);
             CameraConfigurationUtils.setBestExposure(parameters, mFlashEnabled);
+            Camera.Area area = new Camera.Area(new android.graphics.Rect(-100, -100, 100, 100), 400);
+            //System.out.println(mScannerView.getFrameRect().getLeft());
+            //System.out.println(mScannerView.getFrameRect().getTop());
+            //System.out.println(mScannerView.getFrameRect().getRight());
+            //System.out.println(mScannerView.getFrameRect().getBottom());
+            //135
+            //403
+            //945
+            //1213
+            //Camera.Area area = new Camera.Area(new android.graphics.Rect(mScannerView.getFrameRect().getLeft(),
+            //        mScannerView.getFrameRect().getTop(),
+            //        mScannerView.getFrameRect().getRight(),
+            //        mScannerView.getFrameRect().getBottom()), mScannerView.getFrameRect().getLeft());
+            parameters.setMeteringAreas(Arrays.asList(area));
             camera.setParameters(parameters);
             camera.setDisplayOrientation(orientation);
             synchronized (mInitializeLock) {
